@@ -1,0 +1,309 @@
+/* 全体のスタイル */
+:root {
+  --bg: #f5f6f8;
+  --card: #ffffff;
+  --text: #222;
+  --muted: #777;
+  --border: #e2e4e8;
+  --primary: #2f6fdb;
+  --error: #c62828;
+  --success: #2e7d32;
+  --warning: #8a5a00;
+  --warning-bg: #fff8e1;
+  --warning-border: #f0c36d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Yu Gothic UI', 'Meiryo', sans-serif;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+h2 {
+  margin: 0 0 12px;
+  font-size: 1.1rem;
+}
+
+.subtitle {
+  margin: 4px 0 20px;
+  color: var(--muted);
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px;
+  margin-bottom: 16px;
+}
+
+/* アップロード欄 */
+.upload-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+button {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 18px;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.link-button {
+  background: none;
+  color: var(--muted);
+  padding: 2px 6px;
+  margin-left: 8px;
+  font-size: 0.85rem;
+  text-decoration: underline;
+}
+
+.link-button:hover {
+  color: var(--error);
+}
+
+.preview {
+  display: block;
+  max-width: 220px;
+  max-height: 300px;
+  margin-top: 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.error {
+  color: var(--error);
+}
+
+.success {
+  color: var(--success);
+}
+
+/* 警告（マイナス金額・重複） */
+.warning {
+  color: var(--warning);
+}
+
+.warning-box {
+  margin-top: 12px;
+  padding: 12px 14px;
+  background: var(--warning-bg);
+  border: 1px solid var(--warning-border);
+  border-radius: 8px;
+  color: var(--warning);
+}
+
+.warning-box p {
+  margin: 0 0 8px;
+}
+
+.warning-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+button.secondary {
+  background: #fff;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+/* 手入力フォーム */
+.manual-entry {
+  margin-top: 16px;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fafbfc;
+}
+
+.manual-entry h3 {
+  margin: 0 0 12px;
+  font-size: 1rem;
+}
+
+.manual-fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.manual-fields label {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.manual-entry input[type='text'],
+.manual-entry input[type='number'],
+.manual-entry input[type='date'],
+.manual-entry input[type='time'] {
+  padding: 5px 8px;
+  font-size: 0.95rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  width: 100%;
+  min-width: 0;
+}
+
+.manual-entry .price-input {
+  width: 110px;
+  text-align: right;
+}
+
+.required {
+  color: var(--error);
+  font-size: 0.75rem;
+}
+
+.manual-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.manual-entry ul.error {
+  margin: 8px 0;
+  padding-left: 20px;
+}
+
+.empty,
+.muted {
+  color: var(--muted);
+}
+
+.month-filter {
+  margin-bottom: 16px;
+}
+
+select {
+  padding: 4px 6px;
+  font-size: 0.9rem;
+}
+
+/* グラフ */
+.charts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.charts .card {
+  margin-bottom: 0;
+}
+
+.charts + .card {
+  margin-top: 16px;
+}
+
+.chart-box {
+  position: relative;
+  height: 280px;
+}
+
+.summary-total {
+  margin-bottom: 8px;
+}
+
+.summary-total strong {
+  font-size: 1.3rem;
+}
+
+.swatch {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+/* 表 */
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+th,
+td {
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+
+th {
+  color: var(--muted);
+  font-weight: normal;
+}
+
+.num {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.minus {
+  color: var(--error);
+}
+
+.category-table {
+  margin-top: 12px;
+}
+
+.receipt {
+  margin-bottom: 20px;
+}
+
+.receipt-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px;
+  background: var(--bg);
+  border-radius: 6px;
+}
+
+/* スマホ幅ではグラフを縦に並べる */
+@media (max-width: 720px) {
+  .charts {
+    grid-template-columns: 1fr;
+  }
+}

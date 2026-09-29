@@ -4,10 +4,38 @@
 
 ## プロジェクト概要
 
-家計簿アプリ（kakeibo-app）。収入・支出を記録し、月ごとの集計やカテゴリ別の内訳を確認できるようにすることを目的とする。
+レシート読み込み家計簿Webアプリ（kakeibo-app）。レシート画像を Claude API で読み取り、商品をカテゴリ別に自動分類して、月別・カテゴリ別に集計・グラフ表示する。
 
-- 技術スタック: 未定（決まり次第ここに追記する）
-- 起動・ビルド・テストのコマンド: 未定（決まり次第ここに追記する）
+### 技術スタック
+
+- フロントエンド: React + Vite、グラフは Chart.js（react-chartjs-2）
+- バックエンド: Node.js + Express（`server/`）
+- AI: Claude API（`@anthropic-ai/sdk`）、モデルは `claude-haiku-4-5`
+- データ保存: ブラウザのローカルストレージ（サーバー側にDBはない）
+
+### コマンド
+
+```bash
+npm install     # 依存パッケージのインストール
+npm run dev     # 開発サーバー起動（フロント: http://localhost:5173 / API: 3001）
+npm run build   # フロントエンドのビルド（dist/）
+npm start       # ビルドしてサーバー起動（http://localhost:3001）
+```
+
+### 構成
+
+- `server/index.js` … Express サーバー。`POST /api/receipt` で画像を受け取る
+- `server/receipt.js` … Claude API 呼び出し（構造化出力で店名・日付・商品を取得）
+- `src/categories.js` … カテゴリ一覧と色。フロントとサーバーの両方で使う
+- `src/storage.js` … ローカルストレージの読み書き
+- `src/summary.js` … 集計処理
+- `src/components/` … 画面部品（アップロード、一覧、グラフ）
+
+### 守るべき方針
+
+- Claude API はバックエンドからだけ呼ぶ。ブラウザ側のコードで API キーを扱わない。
+- API キーは `.env` の `ANTHROPIC_API_KEY` で管理する（`.env.example` を参照）。`.env` はコミットしない。
+- コメントは日本語で書く。
 
 ## 作業範囲
 
