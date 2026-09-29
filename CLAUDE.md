@@ -52,13 +52,8 @@ git push
 - `node_modules/` などの依存パッケージや、ビルド成果物
 - これらは `.gitignore` に登録しておく。
 
-### 初期設定（未実施の場合）
+### リポジトリ情報
 
-このフォルダはまだ Git リポジトリになっていない。最初に以下を行う:
-
-```bash
-git init
-git branch -M main
-git remote add origin <GitHubリポジトリのURL>
-git push -u origin main
-```
+- リモート: https://github.com/takagawa-glitch/kakeibo-app.git（`origin`）
+- メインブランチ: `main`
+- Box 上のフォルダのため、Git の `safe.directory` にこのフォルダを登録済み。
